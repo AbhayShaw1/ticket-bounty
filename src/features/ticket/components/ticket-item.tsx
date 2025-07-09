@@ -1,15 +1,17 @@
+import { buttonVariants } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ticketPath } from '@/path';
+import clsx from 'clsx';
+import { LucideCircleArrowOutUpRight } from 'lucide-react';
 import Link from 'next/link';
 import { TICKET_ICONS } from '../constants';
 import { Ticket } from '../types';
-import { LucideCircleArrowOutUpRight } from 'lucide-react';
-import { Button, buttonVariants } from '@/components/ui/button';
 
 type TicketItemProps = {
     ticket: Ticket;
+    isDetail?: boolean;
 };
-const TicketItem = ({ ticket }: TicketItemProps) => {
+const TicketItem = ({ ticket, isDetail }: TicketItemProps) => {
     const detailButton = (
         <Link href={ticketPath(ticket.id)} className={buttonVariants({ variant: 'ghost' })}>
             <LucideCircleArrowOutUpRight className="h-4 w-4" />
@@ -17,7 +19,12 @@ const TicketItem = ({ ticket }: TicketItemProps) => {
     );
 
     return (
-        <div className="flex w-full max-w-[420px] gap-x-2">
+        <div
+            className={clsx('flex w-full gap-x-2', {
+                'max-w-[420px]': !isDetail,
+                'max-w-[580px]': isDetail,
+            })}
+        >
             <Card className="w-full">
                 <CardHeader>
                     <CardTitle className="flex gap-x-2">
@@ -26,10 +33,16 @@ const TicketItem = ({ ticket }: TicketItemProps) => {
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <span className="line-clamp-3 whitespace-break-spaces">{ticket.content}</span>
+                    <span
+                        className={clsx('whitespace-break-spaces', {
+                            'line-clamp-3': !isDetail,
+                        })}
+                    >
+                        {ticket.content}
+                    </span>
                 </CardContent>
             </Card>
-            <div className="flex flex-col gap-y-11">{detailButton}</div>
+            {isDetail ? null : <div className="flex flex-col gap-y-11">{detailButton}</div>}
         </div>
     );
 };
