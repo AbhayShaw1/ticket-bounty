@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { LucideOctagonX } from 'lucide-react';
 import { cloneElement } from 'react';
 
