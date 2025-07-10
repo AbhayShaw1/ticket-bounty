@@ -8,7 +8,8 @@
         "start": "next start",
         "lint": "next lint",
         "type": "tsc --noEmit",
-        "postinstall": "prisma generate"
+        "postinstall": "prisma generate",
+        "prisma-seed": "tsx prisma/seed.ts"
     },
     "prisma": {
         "schema": "./prisma"
@@ -38,6 +39,7 @@
         "prettier-plugin-tailwindcss": "^0.6.13",
         "prisma": "^6.11.1",
         "tailwindcss": "^4",
+        "tsx": "^4.20.3",
         "tw-animate-css": "^1.3.5",
         "typescript": "^5"
     }
