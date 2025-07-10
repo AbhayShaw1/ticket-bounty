@@ -2,8 +2,8 @@
 
 import { prisma } from '@/lib/prisma';
 
-export const deleteTicketAction = async (id: string) => {
-    return await prisma.ticket.delete({
+export const deleteTicketAction = async (id: string): Promise<void> => {
+    await prisma.ticket.delete({
         where: {
             id,
         },
