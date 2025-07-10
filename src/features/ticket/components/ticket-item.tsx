@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { LucideCircleArrowOutUpRight } from 'lucide-react';
 import Link from 'next/link';
 import { TICKET_ICONS } from '../constants';
-import { Ticket } from '../types';
+import { Ticket } from '../../../../generated/prisma';
 
 type TicketItemProps = {
     ticket: Ticket;
