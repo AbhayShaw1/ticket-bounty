@@ -1,5 +1,4 @@
 import { CardCompact } from '@/components/card-compact';
-import { TicketUpdateForm } from '@/features/ticket/components/ticket-update-form';
 import { TicketUpsertForm } from '@/features/ticket/components/ticket-upsert-form';
 import { getTicketQuery } from '@/features/ticket/queries/get-ticket';
 import { notFound } from 'next/navigation';
