@@ -5,7 +5,7 @@ import { ticketsPath } from '@/path';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
-export const updateTicketAction = async (ticketId: string, formData: FormData) => {
+export const updateTicketAction = async (ticketId: string | undefined, formData: FormData) => {
     const data = {
         title: formData.get('title'),
         content: formData.get('content'),
