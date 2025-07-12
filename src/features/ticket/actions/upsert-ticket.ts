@@ -16,7 +16,7 @@ const upsertTicketSchema = z.object({
 
 export const upsertTicketAction = async (
     ticketId: string | undefined,
-    _actionState: { message: string },
+    _actionState: { message: string; payload?: FormData },
     formData: FormData,
 ) => {
     try {
@@ -32,7 +32,7 @@ export const upsertTicketAction = async (
             create: data,
         });
     } catch (error) {
-        return { message: 'Error creating or updating ticket', error };
+        return { message: 'Something went wrong', error, payload: formData };
     }
 
     revalidatePath(ticketsPath());
